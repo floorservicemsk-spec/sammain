@@ -944,18 +944,110 @@
     }
 
     .video {
-      min-height: 600px;
+      min-height: auto;
+      height: auto;
+      padding: 5rem 1.5rem 8rem;
     }
 
-    .video__tags {
-      bottom: 2rem;
+    .video__content {
       padding: 0 1rem;
     }
 
-    .video__play {
-      width: 100px;
-      height: 100px;
+    .video__title {
+      font-size: 1.75rem;
+      margin-bottom: 2rem;
+      line-height: 1.2;
     }
+
+    .video__play {
+      width: 90px;
+      height: 90px;
+    }
+
+    .video__play::before {
+      inset: -10px;
+    }
+
+    .video__play::after {
+      inset: -20px;
+    }
+
+    .video__play-icon {
+      border-left-width: 18px;
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      margin-left: 4px;
+    }
+
+    .video__tags {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      margin-top: 3rem;
+      padding: 0;
+      gap: 0.625rem;
+      max-width: 100%;
+    }
+
+    .video__tag {
+      padding: 0.5rem 1rem;
+      font-size: 0.625rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video {
+      padding: 4rem 1rem 6rem;
+    }
+
+    .video__label {
+      font-size: 0.625rem;
+      letter-spacing: 0.2em;
+    }
+
+    .video__title {
+      font-size: 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .video__play {
+      width: 80px;
+      height: 80px;
+    }
+
+    .video__play::before {
+      inset: -8px;
+    }
+
+    .video__play::after {
+      inset: -16px;
+    }
+
+    .video__play-icon {
+      border-left-width: 16px;
+      border-top-width: 9px;
+      border-bottom-width: 9px;
+      margin-left: 3px;
+    }
+
+    .video__tags {
+      margin-top: 2.5rem;
+      gap: 0.5rem;
+    }
+
+    .video__tag {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.5625rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+
+  /* Gallery smooth scroll transition */
+  .gallery__scroll--smooth {
+    scroll-behavior: smooth;
   }
 </style>
 
@@ -1237,16 +1329,95 @@
   let isDown = false;
   let startX;
   let scrollLeft;
-  let velX = 0;
-  let momentumID;
+  let lastX;
+  let lastTime;
+  let velocity = 0;
+  let animationId;
+  let targetScroll = null;
+  let isAnimating = false;
+
+  // Easing function for smooth animation
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Smooth scroll animation
+  function smoothScrollTo(target, duration = 600) {
+    cancelAnimation();
+    isAnimating = true;
+    
+    const start = gallery.scrollLeft;
+    const distance = target - start;
+    const startTime = performance.now();
+
+    function animate(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+      
+      gallery.scrollLeft = start + (distance * eased);
+
+      if (progress < 1) {
+        animationId = requestAnimationFrame(animate);
+      } else {
+        isAnimating = false;
+        targetScroll = null;
+      }
+    }
+
+    animationId = requestAnimationFrame(animate);
+  }
+
+  // Momentum animation after drag release
+  function beginMomentum() {
+    if (Math.abs(velocity) < 0.5) {
+      isAnimating = false;
+      return;
+    }
+
+    isAnimating = true;
+    const friction = 0.95;
+    const minVelocity = 0.5;
+
+    function momentumStep() {
+      if (Math.abs(velocity) < minVelocity) {
+        isAnimating = false;
+        return;
+      }
+
+      gallery.scrollLeft += velocity;
+      velocity *= friction;
+
+      // Boundary check
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+      if (gallery.scrollLeft <= 0 || gallery.scrollLeft >= maxScroll) {
+        velocity *= 0.5;
+      }
+
+      animationId = requestAnimationFrame(momentumStep);
+    }
+
+    animationId = requestAnimationFrame(momentumStep);
+  }
+
+  function cancelAnimation() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    isAnimating = false;
+  }
 
   // Mouse drag scrolling
   gallery.addEventListener('mousedown', (e) => {
     isDown = true;
+    cancelAnimation();
     gallery.classList.add('gallery__scroll--active');
-    startX = e.pageX - gallery.offsetLeft;
+    startX = e.pageX;
     scrollLeft = gallery.scrollLeft;
-    cancelMomentum();
+    lastX = e.pageX;
+    lastTime = performance.now();
+    velocity = 0;
   });
 
   gallery.addEventListener('mouseleave', () => {
@@ -1258,51 +1429,87 @@
   });
 
   gallery.addEventListener('mouseup', () => {
-    isDown = false;
-    gallery.classList.remove('gallery__scroll--active');
-    beginMomentum();
+    if (isDown) {
+      isDown = false;
+      gallery.classList.remove('gallery__scroll--active');
+      beginMomentum();
+    }
   });
 
   gallery.addEventListener('mousemove', (e) => {
     if (!isDown) return;
     e.preventDefault();
-    const x = e.pageX - gallery.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    const prevScrollLeft = gallery.scrollLeft;
+
+    const currentTime = performance.now();
+    const deltaTime = currentTime - lastTime;
+    const deltaX = e.pageX - lastX;
+
+    // Calculate velocity for momentum
+    if (deltaTime > 0) {
+      velocity = (deltaX / deltaTime) * 16 * -1.2;
+    }
+
+    // Update scroll position
+    const walk = (e.pageX - startX) * 1.2;
     gallery.scrollLeft = scrollLeft - walk;
-    velX = gallery.scrollLeft - prevScrollLeft;
+
+    lastX = e.pageX;
+    lastTime = currentTime;
   });
 
-  // Momentum scrolling after release
-  function beginMomentum() {
-    cancelMomentum();
-    momentumID = requestAnimationFrame(momentumLoop);
-  }
-
-  function cancelMomentum() {
-    cancelAnimationFrame(momentumID);
-  }
-
-  function momentumLoop() {
-    gallery.scrollLeft += velX;
-    velX *= 0.92;
-    if (Math.abs(velX) > 0.5) {
-      momentumID = requestAnimationFrame(momentumLoop);
-    }
-  }
-
-  // Keyboard navigation (Arrow keys)
+  // Keyboard navigation with smooth animation
   gallery.setAttribute('tabindex', '0');
   gallery.addEventListener('keydown', (e) => {
-    const scrollAmount = 420;
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    
+    e.preventDefault();
+    cancelAnimation();
+
+    const cardWidth = 420;
+    const currentScroll = gallery.scrollLeft;
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    
+    let target;
     if (e.key === 'ArrowRight') {
-      e.preventDefault();
-      gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    } else if (e.key === 'ArrowLeft') {
-      e.preventDefault();
-      gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      target = Math.min(currentScroll + cardWidth, maxScroll);
+    } else {
+      target = Math.max(currentScroll - cardWidth, 0);
     }
+
+    smoothScrollTo(target, 500);
   });
+
+  // Touch support for smooth momentum
+  let touchStartX;
+  let touchLastX;
+  let touchLastTime;
+
+  gallery.addEventListener('touchstart', (e) => {
+    cancelAnimation();
+    touchStartX = e.touches[0].pageX;
+    touchLastX = touchStartX;
+    touchLastTime = performance.now();
+    scrollLeft = gallery.scrollLeft;
+    velocity = 0;
+  }, { passive: true });
+
+  gallery.addEventListener('touchmove', (e) => {
+    const currentTime = performance.now();
+    const deltaTime = currentTime - touchLastTime;
+    const currentX = e.touches[0].pageX;
+    const deltaX = currentX - touchLastX;
+
+    if (deltaTime > 0) {
+      velocity = (deltaX / deltaTime) * 16 * -1;
+    }
+
+    touchLastX = currentX;
+    touchLastTime = currentTime;
+  }, { passive: true });
+
+  gallery.addEventListener('touchend', () => {
+    beginMomentum();
+  }, { passive: true });
 
   // Prevent link/image dragging interference
   gallery.querySelectorAll('img').forEach(img => {
