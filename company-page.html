@@ -239,12 +239,15 @@
     background: var(--color-gray-200);
   }
 
-  .numbers__item:last-child::after,
-  .numbers__item:nth-child(4n)::after {
+  .numbers__item:nth-child(4)::after {
     display: none;
   }
 
   @media (max-width: 1024px) {
+    .numbers__item::after {
+      display: block;
+    }
+    
     .numbers__item:nth-child(2n)::after {
       display: none;
     }
@@ -262,11 +265,21 @@
     line-height: 1;
     color: var(--color-black);
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .numbers__value-number {
+    display: block;
   }
 
   .numbers__value-suffix {
-    font-size: 0.5em;
+    font-size: 0.4em;
     color: var(--color-accent);
+    margin-left: 0.05em;
+    margin-top: 0.15em;
+    font-weight: 400;
   }
 
   .numbers__description {
@@ -1090,19 +1103,27 @@
       </div>
       <div class="numbers__grid">
         <div class="numbers__item">
-          <div class="numbers__value">20<span class="numbers__value-suffix">+</span></div>
+          <div class="numbers__value">
+            <span class="numbers__value-number">20</span><span class="numbers__value-suffix">+</span>
+          </div>
           <p class="numbers__description">Years of Experience</p>
         </div>
         <div class="numbers__item">
-          <div class="numbers__value">35<span class="numbers__value-suffix">k</span></div>
+          <div class="numbers__value">
+            <span class="numbers__value-number">35</span><span class="numbers__value-suffix">k</span>
+          </div>
           <p class="numbers__description">Square Meters Production</p>
         </div>
         <div class="numbers__item">
-          <div class="numbers__value">500<span class="numbers__value-suffix">+</span></div>
+          <div class="numbers__value">
+            <span class="numbers__value-number">500</span><span class="numbers__value-suffix">+</span>
+          </div>
           <p class="numbers__description">Completed Projects</p>
         </div>
         <div class="numbers__item">
-          <div class="numbers__value">98<span class="numbers__value-suffix">%</span></div>
+          <div class="numbers__value">
+            <span class="numbers__value-number">98</span><span class="numbers__value-suffix">%</span>
+          </div>
           <p class="numbers__description">Client Satisfaction</p>
         </div>
       </div>
