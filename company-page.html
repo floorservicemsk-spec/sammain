@@ -542,8 +542,23 @@
     display: none;
   }
 
-  .gallery__scroll:active {
+  .gallery__scroll:active,
+  .gallery__scroll--active {
     cursor: grabbing;
+  }
+
+  .gallery__scroll--active .gallery__card {
+    pointer-events: none;
+    transition: none;
+  }
+
+  .gallery__scroll:focus {
+    outline: none;
+  }
+
+  .gallery__scroll:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 
   .gallery__card {
@@ -1213,3 +1228,85 @@
     </div>
   </section>
 </div>
+
+<script>
+(function() {
+  const gallery = document.querySelector('.gallery__scroll');
+  if (!gallery) return;
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  let velX = 0;
+  let momentumID;
+
+  // Mouse drag scrolling
+  gallery.addEventListener('mousedown', (e) => {
+    isDown = true;
+    gallery.classList.add('gallery__scroll--active');
+    startX = e.pageX - gallery.offsetLeft;
+    scrollLeft = gallery.scrollLeft;
+    cancelMomentum();
+  });
+
+  gallery.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      gallery.classList.remove('gallery__scroll--active');
+      beginMomentum();
+    }
+  });
+
+  gallery.addEventListener('mouseup', () => {
+    isDown = false;
+    gallery.classList.remove('gallery__scroll--active');
+    beginMomentum();
+  });
+
+  gallery.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - gallery.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    const prevScrollLeft = gallery.scrollLeft;
+    gallery.scrollLeft = scrollLeft - walk;
+    velX = gallery.scrollLeft - prevScrollLeft;
+  });
+
+  // Momentum scrolling after release
+  function beginMomentum() {
+    cancelMomentum();
+    momentumID = requestAnimationFrame(momentumLoop);
+  }
+
+  function cancelMomentum() {
+    cancelAnimationFrame(momentumID);
+  }
+
+  function momentumLoop() {
+    gallery.scrollLeft += velX;
+    velX *= 0.92;
+    if (Math.abs(velX) > 0.5) {
+      momentumID = requestAnimationFrame(momentumLoop);
+    }
+  }
+
+  // Keyboard navigation (Arrow keys)
+  gallery.setAttribute('tabindex', '0');
+  gallery.addEventListener('keydown', (e) => {
+    const scrollAmount = 420;
+    if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+  });
+
+  // Prevent link/image dragging interference
+  gallery.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
+  });
+})();
+</script>
