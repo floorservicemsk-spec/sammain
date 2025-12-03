@@ -1,0 +1,1215 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --color-black: #0a0a0a;
+    --color-dark: #1a1a1a;
+    --color-gray-900: #2d2d2d;
+    --color-gray-600: #6b6b6b;
+    --color-gray-400: #9a9a9a;
+    --color-gray-200: #e5e5e5;
+    --color-light: #f5f5f7;
+    --color-white: #ffffff;
+    --color-accent: #c41e3a;
+    --color-accent-dark: #9a1830;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .company-page {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ========================================
+     SECTION 1: HERO BANNER
+     ======================================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--color-black);
+  }
+
+  .hero__background {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.85) 100%),
+      url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80') center/cover no-repeat;
+    opacity: 0.6;
+    transform: scale(1.05);
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroZoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1.15); }
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) 0.3s forwards;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 400;
+    line-height: 0.95;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 2rem;
+  }
+
+  .hero__title-line {
+    display: block;
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) forwards;
+  }
+
+  .hero__title-line:nth-child(1) { animation-delay: 0.5s; }
+  .hero__title-line:nth-child(2) { animation-delay: 0.7s; }
+
+  .hero__title-line--accent {
+    color: var(--color-accent);
+    font-size: 0.6em;
+  }
+
+  .hero__description {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) 0.9s forwards;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeInUp 1s var(--transition-smooth) 1.2s forwards;
+  }
+
+  .hero__scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--color-accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.5; transform: scaleY(0.8); }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ========================================
+     SECTION 2: COMPANY IN NUMBERS
+     ======================================== */
+  .numbers {
+    background: var(--color-white);
+    padding: 8rem 2rem;
+  }
+
+  .numbers__container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .numbers__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .numbers__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .numbers__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .numbers__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+
+  @media (max-width: 1024px) {
+    .numbers__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4rem 2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .numbers__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .numbers__item {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .numbers__item::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60%;
+    width: 1px;
+    background: var(--color-gray-200);
+  }
+
+  .numbers__item:last-child::after,
+  .numbers__item:nth-child(4n)::after {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    .numbers__item:nth-child(2n)::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .numbers__item::after {
+      display: none;
+    }
+  }
+
+  .numbers__value {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 8vw, 6rem);
+    line-height: 1;
+    color: var(--color-black);
+    margin-bottom: 0.5rem;
+  }
+
+  .numbers__value-suffix {
+    font-size: 0.5em;
+    color: var(--color-accent);
+  }
+
+  .numbers__description {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ========================================
+     SECTION 3: MISSION
+     ======================================== */
+  .mission {
+    background: var(--color-light);
+    padding: 10rem 2rem;
+  }
+
+  .mission__container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mission__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+  }
+
+  .mission__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  .mission__quote {
+    position: relative;
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .mission__quote::before {
+    content: '"';
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    font-family: var(--font-display);
+    font-size: 8rem;
+    color: var(--color-accent);
+    opacity: 0.2;
+    line-height: 1;
+  }
+
+  .mission__text {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-weight: 300;
+    color: var(--color-gray-900);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .mission__text strong {
+    font-weight: 600;
+    color: var(--color-black);
+  }
+
+  .mission__signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .mission__signature-line {
+    width: 60px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+
+  .mission__signature-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-gray-600);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ========================================
+     SECTION 4: QUALITY ASSURANCE
+     ======================================== */
+  .quality {
+    background: var(--color-white);
+  }
+
+  .quality__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 800px;
+  }
+
+  @media (max-width: 1024px) {
+    .quality__container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .quality__image {
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+  }
+
+  .quality__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .quality__image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, transparent 100%);
+  }
+
+  .quality__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    .quality__content {
+      padding: 3rem 2rem;
+    }
+  }
+
+  .quality__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .quality__badge-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .quality__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-gray-600);
+    margin-bottom: 1rem;
+  }
+
+  .quality__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .quality__text {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .quality__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .quality__list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--color-gray-900);
+  }
+
+  .quality__check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.125rem;
+  }
+
+  .quality__check svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--color-white);
+    stroke-width: 3;
+    fill: none;
+  }
+
+  /* ========================================
+     SECTION 5: GALLERY
+     ======================================== */
+  .gallery {
+    background: var(--color-black);
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+
+  .gallery__header {
+    text-align: center;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .gallery__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .gallery__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .gallery__scroll {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 2rem 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+  }
+
+  .gallery__scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery__scroll:active {
+    cursor: grabbing;
+  }
+
+  .gallery__card {
+    flex-shrink: 0;
+    width: 400px;
+    height: 500px;
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+    transition: transform 0.5s var(--transition-smooth);
+  }
+
+  @media (max-width: 768px) {
+    .gallery__card {
+      width: 300px;
+      height: 400px;
+    }
+  }
+
+  .gallery__card:hover {
+    transform: scale(1.03);
+  }
+
+  .gallery__card-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--transition-smooth);
+  }
+
+  .gallery__card:hover .gallery__card-image {
+    transform: scale(1.1);
+  }
+
+  .gallery__card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  .gallery__card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    transform: translateY(10px);
+    opacity: 0.8;
+    transition: all 0.4s var(--transition-smooth);
+  }
+
+  .gallery__card:hover .gallery__card-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .gallery__card-title {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .gallery__card-description {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .gallery__hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    color: var(--color-gray-600);
+    font-size: 0.875rem;
+  }
+
+  .gallery__hint-arrow {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .gallery__hint-arrow span {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--color-gray-600);
+    border-bottom: 2px solid var(--color-gray-600);
+    transform: rotate(-45deg);
+    animation: arrowMove 1.5s ease-in-out infinite;
+  }
+
+  .gallery__hint-arrow span:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .gallery__hint-arrow span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes arrowMove {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ========================================
+     SECTION 6: TIMELINE
+     ======================================== */
+  .timeline {
+    background: var(--color-light);
+    padding: 8rem 2rem;
+  }
+
+  .timeline__container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .timeline__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .timeline__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .timeline__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .timeline__items {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline__items::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-gray-200);
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-bottom: 4rem;
+  }
+
+  .timeline__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline__marker {
+    position: absolute;
+    left: -3rem;
+    top: 0.375rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-400);
+    z-index: 1;
+  }
+
+  .timeline__item--current .timeline__marker {
+    border-color: var(--color-black);
+    background: var(--color-black);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .timeline__item--current .timeline__marker::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: var(--color-accent);
+    border-radius: 50%;
+  }
+
+  .timeline__year {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-black);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline__item:not(.timeline__item--current) .timeline__year {
+    color: var(--color-gray-400);
+  }
+
+  .timeline__event {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-gray-900);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline__description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  /* ========================================
+     SECTION 7: VIDEO
+     ======================================== */
+  .video {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--color-black);
+  }
+
+  .video__background {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(135deg, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.5) 100%),
+      url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1920&q=80') center/cover no-repeat;
+  }
+
+  .video__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+  }
+
+  .video__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .video__title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-white);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 3rem;
+  }
+
+  .video__play {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s var(--transition-smooth);
+    position: relative;
+  }
+
+  .video__play::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: playPulse 2s ease-in-out infinite;
+  }
+
+  .video__play::after {
+    content: '';
+    position: absolute;
+    inset: -30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    animation: playPulse 2s ease-in-out infinite 0.5s;
+  }
+
+  @keyframes playPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.5; }
+  }
+
+  .video__play:hover {
+    background: rgba(196, 30, 58, 0.3);
+    border-color: var(--color-accent);
+    transform: scale(1.1);
+  }
+
+  .video__play-icon {
+    width: 0;
+    height: 0;
+    border-left: 24px solid var(--color-white);
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 6px;
+    transition: border-color 0.3s ease;
+  }
+
+  .video__play:hover .video__play-icon {
+    border-left-color: var(--color-white);
+  }
+
+  .video__tags {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 10;
+  }
+
+  .video__tag {
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .video__tag:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-accent);
+    color: var(--color-white);
+  }
+
+  /* ========================================
+     RESPONSIVE UTILITIES
+     ======================================== */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 600px;
+    }
+
+    .numbers {
+      padding: 5rem 1.5rem;
+    }
+
+    .mission {
+      padding: 6rem 1.5rem;
+    }
+
+    .timeline {
+      padding: 5rem 1.5rem;
+    }
+
+    .video {
+      min-height: 600px;
+    }
+
+    .video__tags {
+      bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    .video__play {
+      width: 100px;
+      height: 100px;
+    }
+  }
+</style>
+
+<div class="company-page">
+  <!-- Section 1: Hero Banner -->
+  <section class="hero">
+    <div class="hero__background"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__subtitle">Engineering Excellence Since 2004</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line">Industry.</span>
+        <span class="hero__title-line hero__title-line--accent">A New Level.</span>
+      </h1>
+      <p class="hero__description">
+        Precision manufacturing solutions for the world's most demanding industries. 
+        Where innovation meets reliability.
+      </p>
+    </div>
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Section 2: Company in Numbers -->
+  <section class="numbers">
+    <div class="numbers__container">
+      <div class="numbers__header">
+        <p class="numbers__label">Company at a Glance</p>
+        <h2 class="numbers__title">Numbers That Matter</h2>
+      </div>
+      <div class="numbers__grid">
+        <div class="numbers__item">
+          <div class="numbers__value">20<span class="numbers__value-suffix">+</span></div>
+          <p class="numbers__description">Years of Experience</p>
+        </div>
+        <div class="numbers__item">
+          <div class="numbers__value">35<span class="numbers__value-suffix">k</span></div>
+          <p class="numbers__description">Square Meters Production</p>
+        </div>
+        <div class="numbers__item">
+          <div class="numbers__value">500<span class="numbers__value-suffix">+</span></div>
+          <p class="numbers__description">Completed Projects</p>
+        </div>
+        <div class="numbers__item">
+          <div class="numbers__value">98<span class="numbers__value-suffix">%</span></div>
+          <p class="numbers__description">Client Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Mission -->
+  <section class="mission">
+    <div class="mission__container">
+      <p class="mission__label">Our Philosophy</p>
+      <h2 class="mission__title">Power in the Details</h2>
+      <div class="mission__quote">
+        <p class="mission__text">
+          Every component we manufacture carries our commitment to excellence. 
+          We don't just build machinery — we engineer <strong>confidence</strong> 
+          into every project, ensuring that what leaves our facility performs 
+          flawlessly for decades.
+        </p>
+        <p class="mission__text">
+          Our mission is simple: deliver <strong>uncompromising quality</strong> 
+          through meticulous attention to detail, cutting-edge technology, 
+          and a team that treats every project as if it were our own.
+        </p>
+      </div>
+      <div class="mission__signature">
+        <div class="mission__signature-line"></div>
+        <span class="mission__signature-text">Established 2004</span>
+        <div class="mission__signature-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Quality Assurance -->
+  <section class="quality">
+    <div class="quality__container">
+      <div class="quality__image">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80" alt="Quality control inspection">
+        <div class="quality__image-overlay"></div>
+      </div>
+      <div class="quality__content">
+        <div class="quality__badge">
+          <svg class="quality__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          ISO 9001:2015 Certified
+        </div>
+        <p class="quality__label">Trust & Quality</p>
+        <h2 class="quality__title">Uncompromising Standards</h2>
+        <p class="quality__text">
+          Our quality management system ensures consistent excellence 
+          across every project. From raw materials to final inspection, 
+          every step is documented, measured, and verified.
+        </p>
+        <ul class="quality__list">
+          <li class="quality__list-item">
+            <span class="quality__check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Multi-stage quality control at every production phase</span>
+          </li>
+          <li class="quality__list-item">
+            <span class="quality__check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Precision measuring equipment with 0.001mm accuracy</span>
+          </li>
+          <li class="quality__list-item">
+            <span class="quality__check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Full material traceability and documentation</span>
+          </li>
+          <li class="quality__list-item">
+            <span class="quality__check">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span>Continuous staff training and certification programs</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Gallery -->
+  <section class="gallery">
+    <div class="gallery__header">
+      <p class="gallery__label">Inside Our Facility</p>
+      <h2 class="gallery__title">Production Gallery</h2>
+    </div>
+    <div class="gallery__scroll">
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80" alt="CNC Machining">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">CNC Machining</h3>
+          <p class="gallery__card-description">5-axis precision manufacturing</p>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Assembly Line">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">Assembly Line</h3>
+          <p class="gallery__card-description">Modular production systems</p>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80" alt="Welding Station">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">Welding Station</h3>
+          <p class="gallery__card-description">Certified welding professionals</p>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80" alt="Quality Lab">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">Quality Lab</h3>
+          <p class="gallery__card-description">Metrology and testing center</p>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Warehouse">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">Logistics Hub</h3>
+          <p class="gallery__card-description">Automated inventory management</p>
+        </div>
+      </div>
+      <div class="gallery__card">
+        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80" alt="Engineering">
+        <div class="gallery__card-overlay"></div>
+        <div class="gallery__card-content">
+          <h3 class="gallery__card-title">Engineering Office</h3>
+          <p class="gallery__card-description">CAD/CAM design center</p>
+        </div>
+      </div>
+    </div>
+    <div class="gallery__hint">
+      <div class="gallery__hint-arrow">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <span>Swipe to explore</span>
+    </div>
+  </section>
+
+  <!-- Section 6: Timeline -->
+  <section class="timeline">
+    <div class="timeline__container">
+      <div class="timeline__header">
+        <p class="timeline__label">Our Journey</p>
+        <h2 class="timeline__title">History of Growth</h2>
+      </div>
+      <div class="timeline__items">
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__year">2004</div>
+          <h3 class="timeline__event">Company Foundation</h3>
+          <p class="timeline__description">
+            Started as a small workshop with 12 employees and a vision 
+            to revolutionize precision manufacturing in the region.
+          </p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__year">2008</div>
+          <h3 class="timeline__event">First Major Expansion</h3>
+          <p class="timeline__description">
+            Opened our first 5,000 m² production facility, 
+            acquiring state-of-the-art CNC equipment from Germany and Japan.
+          </p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__year">2012</div>
+          <h3 class="timeline__event">ISO Certification</h3>
+          <p class="timeline__description">
+            Achieved ISO 9001 certification, establishing ourselves 
+            as a trusted partner for international clients.
+          </p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__marker"></div>
+          <div class="timeline__year">2018</div>
+          <h3 class="timeline__event">Global Partnerships</h3>
+          <p class="timeline__description">
+            Formed strategic alliances with leading European engineering firms, 
+            expanding our project portfolio to 15+ countries.
+          </p>
+        </div>
+        <div class="timeline__item timeline__item--current">
+          <div class="timeline__marker"></div>
+          <div class="timeline__year">2026</div>
+          <h3 class="timeline__event">Industry 4.0 Integration</h3>
+          <p class="timeline__description">
+            Completing digital transformation with IoT-enabled production lines, 
+            AI-powered quality control, and sustainable manufacturing practices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Video -->
+  <section class="video">
+    <div class="video__background"></div>
+    <div class="video__content">
+      <p class="video__label">See Us in Action</p>
+      <h2 class="video__title">Watch the Production Process</h2>
+      <button class="video__play" aria-label="Play video">
+        <span class="video__play-icon"></span>
+      </button>
+    </div>
+    <div class="video__tags">
+      <span class="video__tag">Mechanical Engineering</span>
+      <span class="video__tag">Industrial Engineering</span>
+      <span class="video__tag">Precision Manufacturing</span>
+      <span class="video__tag">Automation</span>
+      <span class="video__tag">Quality Control</span>
+    </div>
+  </section>
+</div>
