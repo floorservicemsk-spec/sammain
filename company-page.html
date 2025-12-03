@@ -532,10 +532,11 @@
     gap: 1.5rem;
     padding: 1rem 2rem 2rem;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
     -ms-overflow-style: none;
     cursor: grab;
+    -webkit-overflow-scrolling: touch;
   }
 
   .gallery__scroll::-webkit-scrollbar {
@@ -543,11 +544,18 @@
   }
 
   .gallery__scroll:active,
-  .gallery__scroll--active {
+  .gallery__scroll--active,
+  .gallery__scroll--dragging {
     cursor: grabbing;
+    scroll-snap-type: none;
   }
 
-  .gallery__scroll--active .gallery__card {
+  .gallery__scroll--animating {
+    scroll-snap-type: none;
+  }
+
+  .gallery__scroll--active .gallery__card,
+  .gallery__scroll--dragging .gallery__card {
     pointer-events: none;
     transition: none;
   }
@@ -1345,6 +1353,7 @@
   function smoothScrollTo(target, duration = 600) {
     cancelAnimation();
     isAnimating = true;
+    gallery.classList.add('gallery__scroll--animating');
     
     const start = gallery.scrollLeft;
     const distance = target - start;
@@ -1362,6 +1371,7 @@
       } else {
         isAnimating = false;
         targetScroll = null;
+        gallery.classList.remove('gallery__scroll--animating');
       }
     }
 
@@ -1372,16 +1382,19 @@
   function beginMomentum() {
     if (Math.abs(velocity) < 0.5) {
       isAnimating = false;
+      gallery.classList.remove('gallery__scroll--animating');
       return;
     }
 
     isAnimating = true;
+    gallery.classList.add('gallery__scroll--animating');
     const friction = 0.95;
     const minVelocity = 0.5;
 
     function momentumStep() {
       if (Math.abs(velocity) < minVelocity) {
         isAnimating = false;
+        gallery.classList.remove('gallery__scroll--animating');
         return;
       }
 
@@ -1406,13 +1419,14 @@
       animationId = null;
     }
     isAnimating = false;
+    gallery.classList.remove('gallery__scroll--animating');
   }
 
   // Mouse drag scrolling
   gallery.addEventListener('mousedown', (e) => {
     isDown = true;
     cancelAnimation();
-    gallery.classList.add('gallery__scroll--active');
+    gallery.classList.add('gallery__scroll--active', 'gallery__scroll--dragging');
     startX = e.pageX;
     scrollLeft = gallery.scrollLeft;
     lastX = e.pageX;
@@ -1423,7 +1437,7 @@
   gallery.addEventListener('mouseleave', () => {
     if (isDown) {
       isDown = false;
-      gallery.classList.remove('gallery__scroll--active');
+      gallery.classList.remove('gallery__scroll--active', 'gallery__scroll--dragging');
       beginMomentum();
     }
   });
@@ -1431,7 +1445,7 @@
   gallery.addEventListener('mouseup', () => {
     if (isDown) {
       isDown = false;
-      gallery.classList.remove('gallery__scroll--active');
+      gallery.classList.remove('gallery__scroll--active', 'gallery__scroll--dragging');
       beginMomentum();
     }
   });
