@@ -10,8 +10,8 @@
     --color-gray-200: #e5e5e5;
     --color-light: #f5f5f7;
     --color-white: #ffffff;
-    --color-accent: #c41e3a;
-    --color-accent-dark: #9a1830;
+    --color-accent: #dc2f2f;
+    --color-accent-dark: #b52525;
     --font-display: 'Roboto Condensed', sans-serif;
     --font-body: 'Montserrat', sans-serif;
     --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -49,7 +49,7 @@
     inset: 0;
     background: 
       linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.85) 100%),
-      url('img/hero.jpg') center/cover no-repeat;
+      url('/img/hero.jpg') center/cover no-repeat;
     opacity: 0.7;
     transform: scale(1.10);
     animation: heroZoom 20s ease-in-out infinite alternate;
@@ -82,9 +82,9 @@
 
   .hero__subtitle {
     font-family: var(--font-body);
-    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    font-size: 1rem;
     font-weight: 500;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--color-accent);
     margin-bottom: 1.5rem;
@@ -94,7 +94,7 @@
 
   .hero__title {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 12vw, 10rem);
+    font-size: 5rem;
     font-weight: 600;
     line-height: 0.95;
     color: var(--color-white);
@@ -118,7 +118,7 @@
   }
 
   .hero__description {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: 1.125rem;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.7);
     max-width: 600px;
@@ -195,7 +195,7 @@
 
   .numbers__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 2.5rem;
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -209,15 +209,8 @@
 
   @media (max-width: 1024px) {
     .numbers__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4rem 2rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .numbers__grid {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
     }
   }
 
@@ -244,24 +237,14 @@
 
   @media (max-width: 1024px) {
     .numbers__item::after {
-      display: block;
-    }
-    
-    .numbers__item:nth-child(2n)::after {
-      display: none;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .numbers__item::after {
       display: none;
     }
   }
 
   .numbers__value {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 4vw, 4rem);
-	font-weight: 600;
+    font-size: 3rem;
+    font-weight: 600;
     line-height: 1;
     color: var(--color-accent);
     margin-bottom: 0.5rem;
@@ -291,6 +274,226 @@
   }
 
   /* ========================================
+     SECTION 2.5: ADVANTAGES
+     ======================================== */
+  .advantages {
+    background: var(--color-light);
+    padding: 8rem 2rem;
+  }
+
+  .advantages__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .advantages__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .advantages__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .advantages__title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 4rem;
+  }
+
+  @media (max-width: 1024px) {
+    .advantages__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .advantages {
+      padding: 5rem 1.5rem;
+    }
+
+    .advantages__grid {
+      gap: 2rem;
+    }
+  }
+
+  .advantages__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .advantages__icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--color-white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s var(--transition-smooth);
+  }
+
+  .advantages__item:hover .advantages__icon {
+    background: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(196, 30, 58, 0.25);
+  }
+
+  .advantages__icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  .advantages__item:hover .advantages__icon svg {
+    color: var(--color-white);
+  }
+
+  .advantages__content {
+    flex: 1;
+  }
+
+  .advantages__item-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .advantages__item-text {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+  }
+
+  /* ========================================
+     SECTION 2.7: BRANDS
+     ======================================== */
+  .brands {
+    background: var(--color-white);
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--color-gray-200);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .brands__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .brands__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .brands__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .brands__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .brands__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 1024px) {
+    .brands {
+      padding: 4rem 1.5rem;
+    }
+
+    .brands__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .brands__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .brands__logo {
+    width: 100%;
+    max-width: 180px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--color-light);
+    border-radius: 8px;
+    transition: all 0.3s var(--transition-smooth);
+  }
+
+  .brands__item:hover .brands__logo {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .brands__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(0%);
+    transition: filter 0.3s ease;
+  }
+
+  .brands__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.375rem;
+  }
+
+  .brands__description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.5;
+  }
+
+  /* ========================================
      SECTION 3: MISSION
      ======================================== */
   .mission {
@@ -315,7 +518,7 @@
 
   .mission__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 2.5rem;
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -342,7 +545,7 @@
   }
 
   .mission__text {
-    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    font-size: 1.125rem;
     font-weight: 300;
     color: var(--color-gray-900);
     line-height: 1.8;
@@ -457,7 +660,7 @@
 
   .quality__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-size: 2.25rem;
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -498,6 +701,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 0.125rem;
+	color: #fff;
   }
 
   .quality__check svg {
@@ -534,7 +738,7 @@
 
   .gallery__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 2.5rem;
     color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -724,7 +928,7 @@
 
   .timeline__title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: 2.5rem;
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -847,7 +1051,7 @@
 
   .video__title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: 2rem;
     color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -946,61 +1150,343 @@
   }
 
   /* ========================================
-     RESPONSIVE UTILITIES
+     RESPONSIVE - MOBILE (крупные элементы)
      ======================================== */
+  
   @media (max-width: 768px) {
+    /* Hero - крупный */
     .hero {
-      min-height: 600px;
+      min-height: 100vh;
+    }
+    
+    .hero__content {
+      padding: 2rem;
+    }
+    
+    .hero__subtitle {
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+    }
+    
+    .hero__title {
+      font-size: 3.5rem;
+    }
+    
+    .hero__description {
+      font-size: 1.125rem;
     }
 
+    /* Numbers - крупные цифры */
     .numbers {
       padding: 5rem 1.5rem;
     }
-
-    .mission {
-      padding: 6rem 1.5rem;
+    
+    .numbers__header {
+      margin-bottom: 3rem;
+    }
+    
+    .numbers__title {
+      font-size: 2rem;
+    }
+    
+    .numbers__item {
+      padding: 1.5rem 0;
+    }
+    
+    .numbers__value {
+      font-size: 3.5rem;
+    }
+    
+    .numbers__description {
+      font-size: 1rem;
+      letter-spacing: 0.05em;
     }
 
+    /* Advantages - крупные */
+    .advantages {
+      padding: 5rem 1.5rem;
+    }
+    
+    .advantages__header {
+      margin-bottom: 3rem;
+    }
+    
+    .advantages__title {
+      font-size: 2rem;
+    }
+    
+    .advantages__grid {
+      gap: 2.5rem;
+    }
+    
+    .advantages__item {
+      gap: 1.25rem;
+    }
+    
+    .advantages__icon {
+      width: 64px;
+      height: 64px;
+    }
+    
+    .advantages__icon svg {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .advantages__item-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .advantages__item-text {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Brands - крупные */
+    .brands {
+      padding: 4rem 1.5rem;
+    }
+    
+    .brands__header {
+      margin-bottom: 2.5rem;
+    }
+    
+    .brands__title {
+      font-size: 1.75rem;
+    }
+    
+    .brands__grid {
+      gap: 2.5rem;
+    }
+    
+    .brands__logo {
+      max-width: 200px;
+      height: 80px;
+    }
+    
+    .brands__name {
+      font-size: 1.25rem;
+    }
+    
+    .brands__description {
+      font-size: 1rem;
+    }
+
+    /* Mission - крупный текст */
+    .mission {
+      padding: 5rem 1.5rem;
+    }
+    
+    .mission__label {
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .mission__title {
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .mission__quote {
+      padding: 0;
+      margin-bottom: 2.5rem;
+    }
+    
+    .mission__quote::before {
+      font-size: 6rem;
+      top: -1.5rem;
+      left: -0.5rem;
+    }
+    
+    .mission__text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+    
+    .mission__signature {
+      margin-top: 1.5rem;
+    }
+    
+    .mission__signature-line {
+      width: 50px;
+    }
+    
+    .mission__signature-text {
+      font-size: 0.875rem;
+    }
+
+    /* Quality - крупный */
+    .quality__image {
+      min-height: 350px;
+    }
+    
+    .quality__content {
+      padding: 3rem 1.5rem;
+    }
+    
+    .quality__badge {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+    
+    .quality__label {
+      font-size: 0.875rem;
+    }
+    
+    .quality__title {
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .quality__text {
+      font-size: 1.0625rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .quality__list {
+      gap: 1.25rem;
+    }
+    
+    .quality__list-item {
+      font-size: 1.0625rem;
+      gap: 0.875rem;
+    }
+    
+    .quality__check {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Gallery - крупные карточки */
+    .gallery {
+      padding: 5rem 0;
+    }
+    
+    .gallery__header {
+      margin-bottom: 3rem;
+      padding: 0 1.5rem;
+    }
+    
+    .gallery__label {
+      font-size: 0.875rem;
+    }
+    
+    .gallery__title {
+      font-size: 1.75rem;
+    }
+    
+    .gallery__scroll {
+      padding: 1rem 1.5rem 2rem;
+      gap: 1.25rem;
+    }
+    
+    .gallery__card {
+      width: 320px;
+      height: 400px;
+    }
+    
+    .gallery__card-content {
+      padding: 1.5rem;
+    }
+    
+    .gallery__card-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .gallery__card-description {
+      font-size: 1rem;
+    }
+    
+    .gallery__hint {
+      font-size: 0.9375rem;
+      margin-top: 2rem;
+    }
+
+    /* Timeline - крупный */
     .timeline {
       padding: 5rem 1.5rem;
     }
+    
+    .timeline__header {
+      margin-bottom: 3.5rem;
+    }
+    
+    .timeline__title {
+      font-size: 2rem;
+    }
+    
+    .timeline__items {
+      padding-left: 2.5rem;
+    }
+    
+    .timeline__items::before {
+      left: 6px;
+    }
+    
+    .timeline__marker {
+      left: -2.5rem;
+      width: 14px;
+      height: 14px;
+    }
+    
+    .timeline__item {
+      padding-bottom: 3rem;
+    }
+    
+    .timeline__year {
+      font-size: 2.25rem;
+    }
+    
+    .timeline__event {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .timeline__description {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
 
+    /* Video - крупный */
     .video {
       min-height: auto;
       height: auto;
-      padding: 5rem 1.5rem 8rem;
+      padding: 5rem 1.5rem 6rem;
     }
-
-    .video__content {
-      padding: 0 1rem;
+    
+    .video__label {
+      font-size: 0.875rem;
     }
-
+    
     .video__title {
       font-size: 1.75rem;
-      margin-bottom: 2rem;
-      line-height: 1.2;
+      margin-bottom: 2.5rem;
+      line-height: 1.3;
     }
-
+    
     .video__play {
-      width: 90px;
-      height: 90px;
+      width: 100px;
+      height: 100px;
     }
-
+    
     .video__play::before {
-      inset: -10px;
+      inset: -12px;
     }
-
+    
     .video__play::after {
-      inset: -20px;
+      inset: -24px;
     }
-
+    
     .video__play-icon {
-      border-left-width: 18px;
-      border-top-width: 10px;
-      border-bottom-width: 10px;
-      margin-left: 4px;
+      border-left-width: 20px;
+      border-top-width: 12px;
+      border-bottom-width: 12px;
+      margin-left: 5px;
     }
-
+    
     .video__tags {
       position: relative;
       bottom: auto;
@@ -1008,68 +1494,29 @@
       transform: none;
       margin-top: 3rem;
       padding: 0;
-      gap: 0.625rem;
-      max-width: 100%;
+      gap: 0.75rem;
     }
-
+    
     .video__tag {
-      padding: 0.5rem 1rem;
-      font-size: 0.625rem;
-      letter-spacing: 0.05em;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .video {
-      padding: 4rem 1rem 6rem;
-    }
-
-    .video__label {
-      font-size: 0.625rem;
-      letter-spacing: 0.2em;
-    }
-
-    .video__title {
-      font-size: 1.5rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .video__play {
-      width: 80px;
-      height: 80px;
-    }
-
-    .video__play::before {
-      inset: -8px;
-    }
-
-    .video__play::after {
-      inset: -16px;
-    }
-
-    .video__play-icon {
-      border-left-width: 16px;
-      border-top-width: 9px;
-      border-bottom-width: 9px;
-      margin-left: 3px;
-    }
-
-    .video__tags {
-      margin-top: 2.5rem;
-      gap: 0.5rem;
-    }
-
-    .video__tag {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.5625rem;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      padding: 0.75rem 1.25rem;
+      font-size: 0.8125rem;
     }
   }
 
   /* Gallery smooth scroll transition */
   .gallery__scroll--smooth {
     scroll-behavior: smooth;
+  }
+
+  /* Large screens */
+  @media (min-width: 1200px) {
+    .hero__title {
+      font-size: 7rem;
+    }
+    
+    .hero__description {
+      font-size: 1.25rem;
+    }
   }
 </style>
 
@@ -1111,7 +1558,7 @@
           <div class="numbers__value">
             <span class="numbers__value-number">214</span>
           </div>
-          <p class="numbers__description">сотрудников, с 2020 года штат вырос
+          <p class="numbers__description">сотрудников, с 2020 штат вырос
 в 4 раза</p>
         </div>
         <div class="numbers__item">
@@ -1131,6 +1578,130 @@
       </div>
     </div>
 	
+  </section>
+
+  <!-- Section 2.5: Advantages -->
+  <section class="advantages">
+    <div class="advantages__container">
+      <div class="advantages__header">
+        <p class="advantages__label">Почему мы</p>
+        <h2 class="advantages__title">Наши преимущества</h2>
+      </div>
+      <div class="advantages__grid">
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="2"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Собственный автопарк</h3>
+            <p class="advantages__item-text">Обеспечивает оптовые поставки инструментов, оборудования, СИЗ, спецодежды и расходных материалов на объекты по всей России.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Собственное производство</h3>
+            <p class="advantages__item-text">Производим укрывные тенты и металлические конструкции: кровати, тележки, ограждения, тару для раствора — для комплексного оснащения стройплощадок.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+              <line x1="7" y1="7" x2="7.01" y2="7"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Собственные торговые марки</h3>
+            <p class="advantages__item-text">Развиваем собственные продуктовые линейки стройматериалов: торговые марки Samtools, Samfix, Samflex и Samweld для разных задач строительства и монтажа.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Оснащение городков</h3>
+            <p class="advantages__item-text">Оснащаем строительные городки: мебелью, оборудованием и инфраструктурой для комфортного и безопасного проживания рабочих на объекте.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a6 6 0 0 0-6 6v8a6 6 0 0 0 12 0V8a6 6 0 0 0-6-6z"/>
+              <path d="M6 8h12"/>
+              <path d="M6 12h12"/>
+              <path d="M9 16h6"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Продукты и HoReCa</h3>
+            <p class="advantages__item-text">Поставляем продукты питания, бытовую химию и оборудование для HoReCa, закрывая потребности столовых и пищеблоков на строительных объектах.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Стандарты качества</h3>
+            <p class="advantages__item-text">Работаем по стандартам ГОСТ и сертифицированной системе менеджмента качества ISO 9001:2015, гарантируя стабильный уровень продукции и сервиса.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2.7: Brands -->
+  <section class="brands">
+    <div class="brands__container">
+      <div class="brands__header">
+        <p class="brands__label">Товары для строительства, ремонта, бытовых работ</p>
+        <h2 class="brands__title">НАШИ ТОРГОВЫЕ МАРКИ</h2>
+      </div>
+      <div class="brands__grid">
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="https://samgrupp.ru/local/templates/aspro_max/images/logo/SAMTOOLS.png" alt="Samtoos">
+          </div>
+          <p class="brands__description">Строительные инструменты и СИЗ</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="https://samgrupp.ru/local/templates/aspro_max/images/logo/SAMFIX.png" alt="SAMFIX">
+          </div>
+          <p class="brands__description">Силиконовые герметики</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="https://samgrupp.ru/local/templates/aspro_max/images/logo/SAMFLEX.png" alt="SAMFLEX">
+          </div>
+          <p class="brands__description">Полиуретановая монтажная пена</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="https://samgrupp.ru/local/templates/aspro_max/images/logo/SAMWELD.png" alt="SAMWELD">
+          </div>
+          <p class="brands__description">Электроды и электрододержатели</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Section 3: Mission -->
@@ -1158,7 +1729,7 @@
   <section class="quality">
     <div class="quality__container">
       <div class="quality__image">
-        <img alt="Quality control inspection" src="img/prod.jpg">
+        <img alt="Производство" src="/img/prod.jpg">
         <div class="quality__image-overlay"></div>
       </div>
       <div class="quality__content">
@@ -1174,25 +1745,25 @@
         <ul class="quality__list">
           <li class="quality__list-item">
             <span class="quality__check">
-              
+              1
             </span>
             Двухъярусные и одноярусные металлические кровати
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              
+              2
             </span>
             Металлические грузовые тележки и тачки
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              
+              3
             </span>
             Cтроительные ограждения для площадок
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              
+              4
             </span>
             Контрактное производство
           </li>
@@ -1209,15 +1780,15 @@
     </div>
     <div class="gallery__scroll">
       <div class="gallery__card">
-        <img alt="Производство кроватей" src="img/prod1.jpg" class="gallery__card-image">
+        <img alt="Производство кроватей" src="/img/prod1.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">200 конструкций в день</h3>
-          <p class="gallery__card-description">Мощности цехов позволяют выпускать промышленные объемы продукции ежедневно.</p>
+          <p class="gallery__card-description">Мощности нашего производсва позволяют выпускать промышленные объемы продукции каждый день.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img alt="Assembly Line" src="img/prod4.jpg" class="gallery__card-image">
+        <img alt="Производство кроватей" src="/img/prod4.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">Крупные заказы</h3>
@@ -1225,7 +1796,7 @@
         </div>
       </div>
       <div class="gallery__card">
-        <img alt="Welding Station" src="img/prod5.jpg" class="gallery__card-image">
+        <img alt="Производство кроватей" src="/img/prod5.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">ПОЛНЫЙ ЦИКЛ</h3>
@@ -1233,7 +1804,7 @@
         </div>
       </div>
       <div class="gallery__card">
-        <img alt="Quality Lab" src="img/prod6.jpg" class="gallery__card-image">
+        <img alt="Производство кроватей" src="/img/prod6.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">Поточные линии</h3>
@@ -1241,7 +1812,7 @@
         </div>
       </div>
       <div class="gallery__card">
-         <img alt="Quality Lab" src="img/prod7.jpg" class="gallery__card-image">
+         <img alt="Производство кроватей" src="/img/prod7.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">КОНТРОЛЬ КАЧЕСТВА</h3>
@@ -1249,7 +1820,7 @@
         </div>
       </div>
       <div class="gallery__card">
-        <img alt="Quality Lab" src="img/prod8.jpg" class="gallery__card-image">
+        <img alt="Производство кроватей" src="/img/prod8.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
           <h3 class="gallery__card-title">Интеграция в систему</h3>
@@ -1271,53 +1842,48 @@
   <section class="timeline">
     <div class="timeline__container">
       <div class="timeline__header">
-        <p class="timeline__label">Our Journey</p>
-        <h2 class="timeline__title">History of Growth</h2>
+        <p class="timeline__label">SAMGRUPP</p>
+        <h2 class="timeline__title">НАША ИСТОРИЯ</h2>
       </div>
       <div class="timeline__items">
         <div class="timeline__item">
           <div class="timeline__marker"></div>
-          <div class="timeline__year">2004</div>
-          <h3 class="timeline__event">Company Foundation</h3>
+          <div class="timeline__year">2006</div>
+          <h3 class="timeline__event">Основание компании</h3>
           <p class="timeline__description">
-            Started as a small workshop with 12 employees and a vision 
-            to revolutionize precision manufacturing in the region.
+            Старт работы по комплексному снабжению строительных объектов и формирование первой логистической сети.
           </p>
         </div>
         <div class="timeline__item">
           <div class="timeline__marker"></div>
-          <div class="timeline__year">2008</div>
-          <h3 class="timeline__event">First Major Expansion</h3>
+          <div class="timeline__year">2013</div>
+          <h3 class="timeline__event">Производство тентов</h3>
           <p class="timeline__description">
-            Opened our first 5,000 m² production facility, 
-            acquiring state-of-the-art CNC equipment from Germany and Japan.
+            Открываем в Московской области производство укрывных тентов из ПВХ и тарпаулина мощностью до 120 000 м² полотна в месяц.
           </p>
         </div>
         <div class="timeline__item">
           <div class="timeline__marker"></div>
-          <div class="timeline__year">2012</div>
-          <h3 class="timeline__event">ISO Certification</h3>
+          <div class="timeline__year">2015</div>
+          <h3 class="timeline__event">Цех метталоизделий</h3>
           <p class="timeline__description">
-            Achieved ISO 9001 certification, establishing ourselves 
-            as a trusted partner for international clients.
+           Расширение мощностей и старт металлообработки. Начало производства кроватей для рабочих, строительных тачек и ограждений.
           </p>
         </div>
         <div class="timeline__item">
           <div class="timeline__marker"></div>
-          <div class="timeline__year">2018</div>
-          <h3 class="timeline__event">Global Partnerships</h3>
+          <div class="timeline__year">2020</div>
+          <h3 class="timeline__event">Собственные бренды</h3>
           <p class="timeline__description">
-            Formed strategic alliances with leading European engineering firms, 
-            expanding our project portfolio to 15+ countries.
+            Регистрация марок Samtools, Samfix, Samflex и Samweld. Переход к выпуску инструментов и химии под собственным контролем качества..
           </p>
         </div>
         <div class="timeline__item timeline__item--current">
           <div class="timeline__marker"></div>
-          <div class="timeline__year">2026</div>
-          <h3 class="timeline__event">Industry 4.0 Integration</h3>
+          <div class="timeline__year">2025</div>
+          <h3 class="timeline__event">Логистический хаб</h3>
           <p class="timeline__description">
-            Completing digital transformation with IoT-enabled production lines, 
-            AI-powered quality control, and sustainable manufacturing practices.
+            Открытие крупного производственно-складского комплекса в д. Свитино с собственной инфраструктурой для ускорения отгрузок.
           </p>
         </div>
       </div>
@@ -1328,18 +1894,18 @@
   <section class="video">
     <div class="video__background"></div>
     <div class="video__content">
-      <p class="video__label">See Us in Action</p>
-      <h2 class="video__title">Watch the Production Process</h2>
+      <p class="video__label">SAMGRUPP 2025</p>
+      <h2 class="video__title">Посмотрите видео о компании</h2>
       <button class="video__play" aria-label="Play video">
         <span class="video__play-icon"></span>
       </button>
     </div>
     <div class="video__tags">
-      <span class="video__tag">Mechanical Engineering</span>
-      <span class="video__tag">Industrial Engineering</span>
-      <span class="video__tag">Precision Manufacturing</span>
-      <span class="video__tag">Automation</span>
-      <span class="video__tag">Quality Control</span>
+      <span class="video__tag">Наш офис</span>
+      <span class="video__tag">Производство кроватей</span>
+      <span class="video__tag">Производство тентов</span>
+      <span class="video__tag">Автопарк</span>
+      <span class="video__tag">Склад</span>
     </div>
   </section>
 </div>
