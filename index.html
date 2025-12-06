@@ -367,17 +367,15 @@
     box-shadow: 0 8px 30px rgba(196, 30, 58, 0.25);
   }
 
-  .advantages__icon svg {
-    width: 28px;
-    height: 28px;
-    stroke: var(--color-accent);
-    stroke-width: 2;
-    fill: none;
-    transition: stroke 0.3s ease;
+  .advantages__icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: filter 0.3s ease;
   }
 
-  .advantages__item:hover .advantages__icon svg {
-    stroke: var(--color-white);
+  .advantages__item:hover .advantages__icon img {
+    filter: brightness(0) invert(1);
   }
 
   .advantages__content {
@@ -1366,78 +1364,56 @@
       <div class="advantages__grid">
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-            </svg>
+            <img src="img/Car.png" alt="Автопарк">
           </div>
           <div class="advantages__content">
-            <h3 class="advantages__item-title">Полный цикл снабжения</h3>
-            <p class="advantages__item-text">Поставляем всё: от строительных материалов до продуктов питания. Один поставщик — ноль головной боли.</p>
+            <h3 class="advantages__item-title">Собственный автопарк</h3>
+            <p class="advantages__item-text">Обеспечивает оптовые поставки инструментов, оборудования, СИЗ, спецодежды и расходных материалов на объекты по всей России.</p>
           </div>
         </div>
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
+            <img src="img/Production.png" alt="Производство">
           </div>
           <div class="advantages__content">
             <h3 class="advantages__item-title">Собственное производство</h3>
-            <p class="advantages__item-text">Контролируем качество на каждом этапе. Производим металлоконструкции на своих мощностях с 2015 года.</p>
+            <p class="advantages__item-text">Производим укрывные тенты и металлические конструкции: кровати, тележки, ограждения, тару для раствора — для комплексного оснащения стройплощадок.</p>
           </div>
         </div>
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
-              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
-              <circle cx="5.5" cy="18.5" r="2.5"/>
-              <circle cx="18.5" cy="18.5" r="2.5"/>
-            </svg>
+            <img src="img/Individ.png" alt="Торговые марки">
           </div>
           <div class="advantages__content">
-            <h3 class="advantages__item-title">Собственная логистика</h3>
-            <p class="advantages__item-text">Доставляем в любую точку России. 105 контейнеров в год из Китая и Турции — отлаженные маршруты.</p>
+            <h3 class="advantages__item-title">Собственные торговые марки</h3>
+            <p class="advantages__item-text">Развиваем собственные продуктовые линейки стройматериалов: торговые марки Samtools, Samfix, Samflex и Samweld для разных задач строительства и монтажа.</p>
           </div>
         </div>
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
+            <img src="img/Service.png" alt="Сервис">
           </div>
           <div class="advantages__content">
-            <h3 class="advantages__item-title">13 449 м² складов</h3>
-            <p class="advantages__item-text">Крупный складской запас обеспечивает оперативную отгрузку. Товар всегда в наличии.</p>
+            <h3 class="advantages__item-title">Оснащение городков</h3>
+            <p class="advantages__item-text">Оснащаем строительные городки: мебелью, оборудованием и инфраструктурой для комфортного и безопасного проживания рабочих на объекте.</p>
           </div>
         </div>
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
+            <img src="img/producer.png" alt="Продукты питания">
           </div>
           <div class="advantages__content">
-            <h3 class="advantages__item-title">19 лет на рынке</h3>
-            <p class="advantages__item-text">С 2006 года работаем с крупными строительными проектами. Опыт, который гарантирует результат.</p>
+            <h3 class="advantages__item-title">Продукты и HoReCa</h3>
+            <p class="advantages__item-text">Поставляем продукты питания, бытовую химию и оборудование для HoReCa, закрывая потребности столовых и пищеблоков на строительных объектах.</p>
           </div>
         </div>
         <div class="advantages__item">
           <div class="advantages__icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
+            <img src="img/ISO.png" alt="ISO сертификация">
           </div>
           <div class="advantages__content">
-            <h3 class="advantages__item-title">Команда 214 человек</h3>
-            <p class="advantages__item-text">Штат вырос в 4 раза с 2020 года. Профессионалы, которые знают своё дело и ценят ваше время.</p>
+            <h3 class="advantages__item-title">Стандарты качества</h3>
+            <p class="advantages__item-text">Работаем по стандартам ГОСТ и сертифицированной системе менеджмента качества ISO 9001:2015, гарантируя стабильный уровень продукции и сервиса.</p>
           </div>
         </div>
       </div>
