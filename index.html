@@ -402,10 +402,122 @@
   }
 
   /* ========================================
+     SECTION 2.7: BRANDS
+     ======================================== */
+  .brands {
+    background: var(--color-white);
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--color-gray-200);
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .brands__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .brands__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .brands__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .brands__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .brands__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .brands__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 2rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .brands {
+      padding: 4rem 1.5rem;
+    }
+
+    .brands__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .brands__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .brands__logo {
+    width: 100%;
+    max-width: 180px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--color-light);
+    border-radius: 8px;
+    transition: all 0.3s var(--transition-smooth);
+  }
+
+  .brands__item:hover .brands__logo {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  .brands__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(0%);
+    transition: filter 0.3s ease;
+  }
+
+  .brands__name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.375rem;
+  }
+
+  .brands__description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.5;
+  }
+
+  /* ========================================
      SECTION 3: MISSION
      ======================================== */
   .mission {
-    background: var(--color-white);
+    background: var(--color-light);
     padding: 10rem 2rem;
   }
 
@@ -1327,6 +1439,46 @@
             <h3 class="advantages__item-title">Команда 214 человек</h3>
             <p class="advantages__item-text">Штат вырос в 4 раза с 2020 года. Профессионалы, которые знают своё дело и ценят ваше время.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2.7: Brands -->
+  <section class="brands">
+    <div class="brands__container">
+      <div class="brands__header">
+        <p class="brands__label">Собственные бренды</p>
+        <h2 class="brands__title">Наши торговые марки</h2>
+      </div>
+      <div class="brands__grid">
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="img/brand-samtoos.png" alt="Samtoos">
+          </div>
+          <h3 class="brands__name">Samtoos</h3>
+          <p class="brands__description">Инструменты и СИЗ</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="img/brand-samelectric.png" alt="SamElectric">
+          </div>
+          <h3 class="brands__name">SamElectric</h3>
+          <p class="brands__description">Электротехническая продукция</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="img/brand-samlight.png" alt="SamLight">
+          </div>
+          <h3 class="brands__name">SamLight</h3>
+          <p class="brands__description">Осветительное оборудование</p>
+        </div>
+        <div class="brands__item">
+          <div class="brands__logo">
+            <img src="img/brand-samhome.png" alt="SamHome">
+          </div>
+          <h3 class="brands__name">SamHome</h3>
+          <p class="brands__description">Товары для дома и быта</p>
         </div>
       </div>
     </div>
