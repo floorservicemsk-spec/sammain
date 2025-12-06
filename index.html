@@ -291,6 +291,117 @@
   }
 
   /* ========================================
+     SECTION 2.5: ADVANTAGES
+     ======================================== */
+  .advantages {
+    background: var(--color-light);
+    padding: 8rem 2rem;
+  }
+
+  .advantages__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .advantages__header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .advantages__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .advantages__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 4rem;
+  }
+
+  @media (max-width: 768px) {
+    .advantages {
+      padding: 5rem 1.5rem;
+    }
+
+    .advantages__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .advantages__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .advantages__icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--color-white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s var(--transition-smooth);
+  }
+
+  .advantages__item:hover .advantages__icon {
+    background: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(196, 30, 58, 0.25);
+  }
+
+  .advantages__icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--color-accent);
+    stroke-width: 2;
+    fill: none;
+    transition: stroke 0.3s ease;
+  }
+
+  .advantages__item:hover .advantages__icon svg {
+    stroke: var(--color-white);
+  }
+
+  .advantages__content {
+    flex: 1;
+  }
+
+  .advantages__item-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.5rem;
+  }
+
+  .advantages__item-text {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-gray-600);
+    line-height: 1.7;
+  }
+
+  /* ========================================
      SECTION 3: MISSION
      ======================================== */
   .mission {
@@ -1131,6 +1242,94 @@
       </div>
     </div>
 	
+  </section>
+
+  <!-- Section 2.5: Advantages -->
+  <section class="advantages">
+    <div class="advantages__container">
+      <div class="advantages__header">
+        <p class="advantages__label">Почему мы</p>
+        <h2 class="advantages__title">Наши преимущества</h2>
+      </div>
+      <div class="advantages__grid">
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Полный цикл снабжения</h3>
+            <p class="advantages__item-text">Поставляем всё: от строительных материалов до продуктов питания. Один поставщик — ноль головной боли.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Собственное производство</h3>
+            <p class="advantages__item-text">Контролируем качество на каждом этапе. Производим металлоконструкции на своих мощностях с 2015 года.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Собственная логистика</h3>
+            <p class="advantages__item-text">Доставляем в любую точку России. 105 контейнеров в год из Китая и Турции — отлаженные маршруты.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">13 449 м² складов</h3>
+            <p class="advantages__item-text">Крупный складской запас обеспечивает оперативную отгрузку. Товар всегда в наличии.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">19 лет на рынке</h3>
+            <p class="advantages__item-text">С 2006 года работаем с крупными строительными проектами. Опыт, который гарантирует результат.</p>
+          </div>
+        </div>
+        <div class="advantages__item">
+          <div class="advantages__icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="advantages__content">
+            <h3 class="advantages__item-title">Команда 214 человек</h3>
+            <p class="advantages__item-text">Штат вырос в 4 раза с 2020 года. Профессионалы, которые знают своё дело и ценят ваше время.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Section 3: Mission -->
