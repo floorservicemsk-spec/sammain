@@ -49,15 +49,15 @@
     inset: 0;
     background: 
       linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.85) 100%),
-      url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1920&q=80') center/cover no-repeat;
-    opacity: 0.6;
-    transform: scale(1.05);
+      url('img/hero.jpg') center/cover no-repeat;
+    opacity: 0.7;
+    transform: scale(1.10);
     animation: heroZoom 20s ease-in-out infinite alternate;
   }
 
   @keyframes heroZoom {
-    0% { transform: scale(1.05); }
-    100% { transform: scale(1.15); }
+    0% { transform: scale(1.00); }
+    100% { transform: scale(1.05); }
   }
 
   .hero__overlay {
@@ -95,7 +95,7 @@
   .hero__title {
     font-family: var(--font-display);
     font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 0.95;
     color: var(--color-white);
     text-transform: uppercase;
@@ -114,7 +114,7 @@
 
   .hero__title-line--accent {
     color: var(--color-accent);
-    font-size: 0.6em;
+    font-size: 0.4em;
   }
 
   .hero__description {
@@ -130,7 +130,6 @@
   .hero__scroll {
     position: absolute;
     bottom: 3rem;
-    left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
@@ -145,7 +144,7 @@
   }
 
   .hero__scroll-line {
-    width: 1px;
+    width: 2px;
     height: 60px;
     background: linear-gradient(to bottom, var(--color-accent), transparent);
     animation: scrollPulse 2s ease-in-out infinite;
@@ -261,9 +260,10 @@
 
   .numbers__value {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 8vw, 6rem);
+    font-size: clamp(4rem, 4vw, 4rem);
+	font-weight: 600;
     line-height: 1;
-    color: var(--color-black);
+    color: var(--color-accent);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: flex-start;
@@ -315,7 +315,7 @@
 
   .mission__title {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -783,6 +783,7 @@
   .timeline__year {
     font-family: var(--font-display);
     font-size: 2.5rem;
+	font-weight: 600;
     color: var(--color-black);
     margin-bottom: 0.5rem;
   }
@@ -1078,18 +1079,16 @@
     <div class="hero__background"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <p class="hero__subtitle">Engineering Excellence Since 2004</p>
+      <p class="hero__subtitle">работаем с 2006 года</p>
       <h1 class="hero__title">
-        <span class="hero__title-line">Industry.</span>
-        <span class="hero__title-line hero__title-line--accent">A New Level.</span>
+        <span class="hero__title-line">SAMGRUPP</span>
+        <span class="hero__title-line hero__title-line--accent">снабжение на максимум</span>
       </h1>
       <p class="hero__description">
-        Precision manufacturing solutions for the world's most demanding industries. 
-        Where innovation meets reliability.
-      </p>
+        Мы не ищем легких путей, мы ищем эффективные. Полный цикл снабжения для бесперебойной работы вашего бизнеса.      </p>
     </div>
     <div class="hero__scroll">
-      <span>Scroll</span>
+      далее
       <div class="hero__scroll-line"></div>
     </div>
   </section>
@@ -1098,59 +1097,58 @@
   <section class="numbers">
     <div class="numbers__container">
       <div class="numbers__header">
-        <p class="numbers__label">Company at a Glance</p>
-        <h2 class="numbers__title">Numbers That Matter</h2>
+        <p class="numbers__label">обзор</p>
+        <h2 class="numbers__title">Цифры которые важны</h2>
       </div>
       <div class="numbers__grid">
         <div class="numbers__item">
           <div class="numbers__value">
-            <span class="numbers__value-number">20</span><span class="numbers__value-suffix">+</span>
+            <span class="numbers__value-number">2006</span>
           </div>
-          <p class="numbers__description">Years of Experience</p>
+          <p class="numbers__description">год основания компании</p>
         </div>
         <div class="numbers__item">
           <div class="numbers__value">
-            <span class="numbers__value-number">35</span><span class="numbers__value-suffix">k</span>
+            <span class="numbers__value-number">214</span>
           </div>
-          <p class="numbers__description">Square Meters Production</p>
+          <p class="numbers__description">сотрудников, с 2020 года штат вырос
+в 4 раза</p>
         </div>
         <div class="numbers__item">
           <div class="numbers__value">
-            <span class="numbers__value-number">500</span><span class="numbers__value-suffix">+</span>
+            <span class="numbers__value-number">13 449</span><span class="numbers__value-suffix">м2</span>
           </div>
-          <p class="numbers__description">Completed Projects</p>
+          <p class="numbers__description">площадь производства
+и складов</p>
         </div>
         <div class="numbers__item">
           <div class="numbers__value">
-            <span class="numbers__value-number">98</span><span class="numbers__value-suffix">%</span>
+            <span class="numbers__value-number">105</span><span class="numbers__value-suffix"></span>
           </div>
-          <p class="numbers__description">Client Satisfaction</p>
+          <p class="numbers__description">контейнеров в год
+из Китая и Турции</p>
         </div>
       </div>
     </div>
+	
   </section>
 
   <!-- Section 3: Mission -->
   <section class="mission">
     <div class="mission__container">
-      <p class="mission__label">Our Philosophy</p>
-      <h2 class="mission__title">Power in the Details</h2>
+      <p class="mission__label">наша Философия</p>
+      <h2 class="mission__title">Снабжение на максимум</h2>
       <div class="mission__quote">
         <p class="mission__text">
-          Every component we manufacture carries our commitment to excellence. 
-          We don't just build machinery — we engineer <strong>confidence</strong> 
-          into every project, ensuring that what leaves our facility performs 
-          flawlessly for decades.
+         Ваша задача — возводить объекты и развивать свой бизнес, а не тратить время на снабжение. Наша миссия — создать вокруг вашего проекта экосистему бесперебойной работы.
+              <strong>Для нас нет мелочей.</strong> Мы понимаем, что успех масштабного проекта зависит как от надежной арматуры, так и от комфортного сна рабочего. Поэтому <strong>мы производим и поставляем всё</strong>: от сложного оборудования до продуктов питания. Мы берем на себя ответственность за тылы, чтобы вы могли уверенно идти вперед.
+
         </p>
-        <p class="mission__text">
-          Our mission is simple: deliver <strong>uncompromising quality</strong> 
-          through meticulous attention to detail, cutting-edge technology, 
-          and a team that treats every project as if it were our own.
-        </p>
+        
       </div>
       <div class="mission__signature">
         <div class="mission__signature-line"></div>
-        <span class="mission__signature-text">Established 2004</span>
+        <span class="mission__signature-text">SAMGRUPP 2025</span>
         <div class="mission__signature-line"></div>
       </div>
     </div>
@@ -1160,47 +1158,43 @@
   <section class="quality">
     <div class="quality__container">
       <div class="quality__image">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80" alt="Quality control inspection">
+        <img alt="Quality control inspection" src="img/prod.jpg">
         <div class="quality__image-overlay"></div>
       </div>
       <div class="quality__content">
         <div class="quality__badge">
-          <svg class="quality__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-          </svg>
-          ISO 9001:2015 Certified
+          
+          Производим с 2015 года
         </div>
-        <p class="quality__label">Trust & Quality</p>
-        <h2 class="quality__title">Uncompromising Standards</h2>
+        <p class="quality__label">Качество и надёжность</p>
+        <h2 class="quality__title">Производство металлических изделий</h2>
         <p class="quality__text">
-          Our quality management system ensures consistent excellence 
-          across every project. From raw materials to final inspection, 
-          every step is documented, measured, and verified.
+          Разработали устойчивый и долговечный металлический каркас, выдерживающий нагрузки до 160 килограмм. Ежедневно выпускаем до 200 конструкций.
         </p>
         <ul class="quality__list">
           <li class="quality__list-item">
             <span class="quality__check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              
             </span>
-            <span>Multi-stage quality control at every production phase</span>
+            Двухъярусные и одноярусные металлические кровати
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              
             </span>
-            <span>Precision measuring equipment with 0.001mm accuracy</span>
+            Металлические грузовые тележки и тачки
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              
             </span>
-            <span>Full material traceability and documentation</span>
+            Cтроительные ограждения для площадок
           </li>
           <li class="quality__list-item">
             <span class="quality__check">
-              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              
             </span>
-            <span>Continuous staff training and certification programs</span>
+            Контрактное производство
           </li>
         </ul>
       </div>
@@ -1210,66 +1204,66 @@
   <!-- Section 5: Gallery -->
   <section class="gallery">
     <div class="gallery__header">
-      <p class="gallery__label">Inside Our Facility</p>
-      <h2 class="gallery__title">Production Gallery</h2>
+      <p class="gallery__label">галлерея</p>
+      <h2 class="gallery__title">Производство металлических изделий</h2>
     </div>
     <div class="gallery__scroll">
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80" alt="CNC Machining">
+        <img alt="Производство кроватей" src="img/prod1.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">CNC Machining</h3>
-          <p class="gallery__card-description">5-axis precision manufacturing</p>
+          <h3 class="gallery__card-title">200 конструкций в день</h3>
+          <p class="gallery__card-description">Мощности цехов позволяют выпускать промышленные объемы продукции ежедневно.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Assembly Line">
+        <img alt="Assembly Line" src="img/prod4.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">Assembly Line</h3>
-          <p class="gallery__card-description">Modular production systems</p>
+          <h3 class="gallery__card-title">Крупные заказы</h3>
+          <p class="gallery__card-description">Резерв мощностей и отлаженная логистика позволяют быстро масштабировать выпуск под пик нагрузки.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80" alt="Welding Station">
+        <img alt="Welding Station" src="img/prod5.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">Welding Station</h3>
-          <p class="gallery__card-description">Certified welding professionals</p>
+          <h3 class="gallery__card-title">ПОЛНЫЙ ЦИКЛ</h3>
+          <p class="gallery__card-description">Контролируем все этапы: от резки и гибки металла до сварки и покраски. Никаких посредников.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=800&q=80" alt="Quality Lab">
+        <img alt="Quality Lab" src="img/prod6.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">Quality Lab</h3>
-          <p class="gallery__card-description">Metrology and testing center</p>
+          <h3 class="gallery__card-title">Поточные линии</h3>
+          <p class="gallery__card-description">От заготовки металла до готового изделия — все операции внутри одного производственного контура.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80" alt="Warehouse">
+         <img alt="Quality Lab" src="img/prod7.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">Logistics Hub</h3>
-          <p class="gallery__card-description">Automated inventory management</p>
+          <h3 class="gallery__card-title">КОНТРОЛЬ КАЧЕСТВА</h3>
+          <p class="gallery__card-description">Стандартизированные процессы и контроль на каждом этапе обеспечивают одинаково высокий результат в любой партии.</p>
         </div>
       </div>
       <div class="gallery__card">
-        <img class="gallery__card-image" src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80" alt="Engineering">
+        <img alt="Quality Lab" src="img/prod8.jpg" class="gallery__card-image">
         <div class="gallery__card-overlay"></div>
         <div class="gallery__card-content">
-          <h3 class="gallery__card-title">Engineering Office</h3>
-          <p class="gallery__card-description">CAD/CAM design center</p>
+          <h3 class="gallery__card-title">Интеграция в систему</h3>
+          <p class="gallery__card-description">Производство напрямую связано с нашими складами и логистикой, поэтому изделия оперативно уходят на объекты по стране.</p>
         </div>
       </div>
     </div>
     <div class="gallery__hint">
       <div class="gallery__hint-arrow">
-        <span></span>
-        <span></span>
-        <span></span>
+        
+        
+        
       </div>
-      <span>Swipe to explore</span>
+      Листайте, чтобы увидеть масштаб
     </div>
   </section>
 
