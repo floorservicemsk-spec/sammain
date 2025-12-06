@@ -209,13 +209,6 @@
 
   @media (max-width: 1024px) {
     .numbers__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 4rem 2rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .numbers__grid {
       grid-template-columns: 1fr;
       gap: 2.5rem;
     }
@@ -243,16 +236,6 @@
   }
 
   @media (max-width: 1024px) {
-    .numbers__item::after {
-      display: block;
-    }
-    
-    .numbers__item:nth-child(2n)::after {
-      display: none;
-    }
-  }
-
-  @media (max-width: 768px) {
     .numbers__item::after {
       display: none;
     }
@@ -448,7 +431,7 @@
     gap: 2rem;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .brands {
       padding: 4rem 1.5rem;
     }
